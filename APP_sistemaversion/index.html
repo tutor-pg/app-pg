@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sistema operativo y versión</title>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+		<script type="text/javascript" charset="utf-8">
+
+		//Espera a que se inicie PhoneGap
+		document.addEventListener("deviceready", IniciarAPP, false);
+
+		// IniciarAPP es la funcion que controlará el evento deviceready
+		function IniciarAPP(){
+
+		//la variable elemento guarda una referencia al element que mostrará los datos obtenidos
+		var elemento = document.getElementById('devicePropiedades');
+
+		elemento.innerHTML = 'Plataforma: ' + device.platform + '<br />' +
+							 'Version: ' + device.version + '<br />';
+		}
+		</script>
+<style type="text/css">
+	p { color: blue; }
+	#devicePropiedades { color: red; }
+</style>
+	</head>
+	<body>
+		<p>El sistema operativo y versión de tu dispositivo son:</p>
+		<p id="devicePropiedades">Cargando datos...</p>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Seleccionar la resolución de la cámara</title>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			// Se llamará cuando se obtenga la foto con éxito
+			function onPhotoSuccess(imageData) {
+				var myImage = document.getElementById('myImage');
+				myImage.style.display = 'block';
+				myImage.src = "data:image/jpeg;base64," + imageData;
+			}
+			function onPhotoFail(message) {
+				alert('Ocurrió un error: ' + message);
+			}
+			function capturePhoto() {
+				var dropdown = document.getElementById('quality');
+				var myQuality = dropdown.options[dropdown.selectedIndex].value;
+				navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: myQuality });
+			}
+		</script>
+	</head>
+	<body>
+		<p>Calidad: <select id='quality'>
+		<option value='25'>25%</option>
+		<option value='50'>50%</option>
+		<option value='75'>75%</option>
+		</select>
+		</p>
+		<button onclick='capturePhoto()'>Tomar la foto</button> <br>
+		<img style="display:none;width:60px;height:60px;" id="myImage" src="" />
+	</body>
+</html>
